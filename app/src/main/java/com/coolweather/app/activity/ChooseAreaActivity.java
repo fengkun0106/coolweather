@@ -70,20 +70,18 @@ public class ChooseAreaActivity extends Activity {
         coolWeatherDB = CoolWeatherDB.getInstance(this);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                if (currentLevel == LEVEL_PROVINCE){
-                    selectedProvince = provinceList.get(position);
-                    queryCities();
-                } else if (currentLevel == LEVEL_CITY){
-                    selectedProvince = provinceList.get(position);
+            public void onItemClick(AdapterView<?> arg0, View view, int index,
+                                    long arg3) {
+                if (currentLevel == LEVEL_PROVINCE) {
+                    selectedProvince = provinceList.get(index);
                     queryCities();
                 } else if (currentLevel == LEVEL_CITY) {
-                    selectedCity = cityList.get(position);
+                    selectedCity = cityList.get(index);
                     queryCounties();
                 }
             }
         });
-    queryProvinces(); // 加载省级数据
+        queryProvinces(); // 加载省级数据
     }
     /**
      * 查询全国所有的省，优先从数据库查询，如果没有查询到再去服务器上查询。
